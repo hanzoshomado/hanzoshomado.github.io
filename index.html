@@ -101,9 +101,9 @@ p{text-wrap:pretty}
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 28px; width: min(1760px, calc(100vw - 40px)); position: relative; left: 50%; transform: translateX(-50%)">
 
-<button type="button" class="tile" onclick="P.openCoop(event)" aria-haspopup="dialog" aria-label="[Game title], multiplayer co-op adventure" style="position: relative; display: block; width: 100%; padding: 0; border: none; cursor: pointer; font: inherit; color: inherit; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #18191C">
+<button type="button" class="tile" onclick="P.openCoop(event)" aria-haspopup="dialog" aria-label="Wildfall, multiplayer co-op adventure" style="position: relative; display: block; width: 100%; padding: 0; border: none; cursor: pointer; font: inherit; color: inherit; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #18191C">
 <span class="tile-img" style="position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; background: #18191C"><img src="media/2e1bd321ac32d48c23e741fe566e9eab.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
-<span class="tile-title" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; font-size: clamp(24px, 2.6vw, 36px); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7)">[Game title]</span>
+<span class="tile-title" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; font-size: clamp(24px, 2.6vw, 36px); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7)">Wildfall</span>
 </button>
 
 <button type="button" class="tile" onclick="P.openNyu(event)" aria-haspopup="dialog" aria-label="Tetherblade, 2D action platformer" style="position: relative; display: block; width: 100%; padding: 0; border: none; cursor: pointer; font: inherit; color: inherit; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0F2220">
@@ -146,7 +146,7 @@ p{text-wrap:pretty}
 <!-- Game overlays -->
 <div class="ov-wrap" data-game="coop" hidden>
 <div class="modal-backdrop" onclick="P.closeGame(event)" onkeydown="P.modalKey(event)" style="position: fixed; inset: 0; z-index: 50; background: rgba(8, 9, 10, 0.78); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px)">
-<div class="modal-panel" role="dialog" aria-modal="true" aria-label="[Game title], multiplayer co-op adventure" onclick="P.stop(event)" style="position: absolute; inset: clamp(12px, 2.5vw, 32px); overflow: hidden; background: #16171A; border: 1px solid #2F3237; border-radius: 8px">
+<div class="modal-panel" role="dialog" aria-modal="true" aria-label="Wildfall, multiplayer co-op adventure" onclick="P.stop(event)" style="position: absolute; inset: clamp(12px, 2.5vw, 32px); overflow: hidden; background: #16171A; border: 1px solid #2F3237; border-radius: 8px">
 <button type="button" class="modal-close" onclick="P.closeGame(event)" aria-label="Close" style="position: absolute; top: 16px; right: 16px; z-index: 3; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid #4A4E55; background: rgba(22, 23, 26, 0.7); color: #ECE9E2; cursor: pointer"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round"><path d="M3 3 L13 13 M13 3 L3 13"></path></svg></button>
 <div class="modal-scroll" style="position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain">
 
@@ -154,7 +154,7 @@ p{text-wrap:pretty}
 <picture style="display: contents"><source srcset="media/d449d05505747728482f9a36e2779f6a.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/fb1f501640d5a0ce0cdade29bc073a2e.webp" media="(max-width: 700px)"><img loading="lazy" src="media/3d9e328193239753d489f3e631fa2fe0.webp" alt="Aerial orbit of the ruined castle on its crag" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></picture>
 <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(14, 15, 17, 0.45)"></div>
 <div style="position: relative; max-width: 1000px; padding: 96px clamp(20px, 5vw, 56px); box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6)">
-<h2 style="margin: 0; font-size: clamp(38px, 5.5vw, 72px); font-weight: 500; line-height: 0.95; letter-spacing: -0.03em">[Game title]</h2>
+<h2 style="margin: 0; font-size: clamp(38px, 5.5vw, 72px); font-weight: 500; line-height: 0.95; letter-spacing: -0.03em">Wildfall</h2>
 <p style="margin: 0; font-size: clamp(19px, 2vw, 24px); font-weight: 500">Multiplayer co-op adventure</p>
 </div>
 </section>
