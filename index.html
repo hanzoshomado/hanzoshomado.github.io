@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ben Reyes | Game Developer</title>
+<meta name="description" content="Ben Reyes: game developer and interactive designer. Portfolio of three games.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&amp;display=swap">
+<style>
+html{color-scheme:dark}
+*{scrollbar-width:thin;scrollbar-color:#3B3F45 #16171A}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#16171A}
+::-webkit-scrollbar-thumb{background:#3B3F45;border-radius:999px;border:2px solid #16171A}
+::-webkit-scrollbar-thumb:hover{background:#F5C542}
+body{margin:0;background:#16171A;color:#ECE9E2;font-family:Barlow,"Helvetica Neue",Arial,sans-serif;font-weight:300}
+a{color:#ECE9E2}a:hover{color:#FFFFFF}
+.nav-link{transition:color .2s ease}
+.nav-link:hover{color:#F5C542}
+@media (prefers-reduced-motion: reduce){.nav-link{transition:none}}
+a:focus-visible{outline:2px solid #9CC0D4;outline-offset:4px;border-radius:2px}
+section[id]{scroll-margin-top:72px}
+.site-header{transition:background-color .3s ease,border-color .3s ease}
+@media (prefers-reduced-motion: reduce){.site-header{transition:none}}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+.btn{transition:opacity .15s ease}
+.btn:hover{opacity:.82}
+.tile-img{transition:transform .7s cubic-bezier(.22,.61,.36,1),filter .7s cubic-bezier(.22,.61,.36,1)}
+.tile:hover .tile-img,.tile:focus-visible .tile-img{transform:scale(1.08);filter:grayscale(1) brightness(.45)}
+.tile-scrim{opacity:0;transition:opacity .5s cubic-bezier(.22,.61,.36,1)}
+.tile:hover .tile-scrim,.tile:focus-visible .tile-scrim{opacity:1}
+@media (hover: none){.tile-scrim{opacity:1}}
+.tile-title{opacity:0;transition:opacity .5s cubic-bezier(.22,.61,.36,1) .05s}
+.tile:hover .tile-title,.tile:focus-visible .tile-title{opacity:1}
+@media (hover: none){.tile-title{opacity:1}.tile-img{filter:grayscale(1) brightness(.45)}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn,.tile-img,.tile-title{transition:none}.tile:hover .tile-img,.tile:focus-visible .tile-img{transform:none}}
+.modal-backdrop{animation:modalFade .4s cubic-bezier(.22,.61,.36,1)}
+.modal-panel{animation:modalIn .5s cubic-bezier(.22,.61,.36,1)}
+@keyframes modalFade{from{opacity:0}to{opacity:1}}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes modalFadeOut{from{opacity:1}to{opacity:0}}
+@keyframes modalOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(10px) scale(.99)}}
+.modal-backdrop.is-closing{animation:modalFadeOut .34s cubic-bezier(.4,0,.2,1) forwards;pointer-events:none}
+.modal-backdrop.is-closing .modal-panel{animation:modalOut .34s cubic-bezier(.4,0,.2,1) forwards}
+.modal-close{transition:color .2s ease,border-color .2s ease}
+.modal-close:hover{color:#F5C542;border-color:#F5C542}
+.modal-close:focus-visible{outline:2px solid #9CC0D4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.modal-backdrop,.modal-panel{animation:none}.modal-close{transition:none}}
+.hero-slide{opacity:0;animation:heroCycle 25s linear infinite}
+@keyframes heroCycle{0%{opacity:0}4%{opacity:1}20%{opacity:1}24%{opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.hero-slide{animation:none}.hero-slide:first-of-type{opacity:1}}
+@media (max-width: 700px){.hero-intro{min-height:560px!important}.ov-hero{min-height:400px!important}.coop-wide{aspect-ratio:16 / 18!important}}
+</style>
+
+</head>
+<body>
+
+<div id="top" style="min-height: 100%; overflow-x: clip; background: #16171A; color: #ECE9E2; font-family: Barlow, 'Helvetica Neue', Arial, sans-serif; font-weight: 300">
+
+<header class="site-header" style="position: sticky; top: 0; z-index: 20; height: 78px; box-sizing: border-box; background: rgba(22, 23, 26, 0); backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid rgba(47, 50, 55, 0)">
+<nav aria-label="Main" style="max-width: 1800px; margin: 0 auto; padding: 18px clamp(20px, 3vw, 40px); box-sizing: border-box; display: flex; justify-content: flex-end">
+<div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0 clamp(16px, 3vw, 40px); font-size: 15px">
+<a class="nav-link" href="#work" onclick="P.goWork(event)" aria-current="page" style="text-decoration: none; padding: 10px 0; color: #F5C542">Work</a>
+<a class="nav-link" href="#about" onclick="P.goAbout(event)" style="text-decoration: none; padding: 10px 0">About</a>
+</div>
+</nav>
+</header>
+
+<!-- Hero: full-width background video -->
+<section class="hero-intro" aria-label="Intro" style="position: relative; margin-top: -78px; min-height: 760px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid #2F3237; background: #16171A">
+<picture class="hero-slide" style="position: absolute; inset: 0; display: block; animation-delay: -1s"><source srcset="media/f3b86e95008dc8d4c8602b6886b5e9c0.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/954393b2d793bbb47362f882aafcbd1d.webp" media="(max-width: 700px)"><img src="media/890ad3436971ec6a10cd833160a4c9f9.webp" alt="Arched masonry bridge over a misty gorge" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture>
+<picture class="hero-slide" style="position: absolute; inset: 0; display: block; animation-delay: 4s"><source srcset="media/9e88ab58f8691c7531cdabbe6986e942.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/7e9488b81f525f9099ba777b48451636.webp" media="(max-width: 700px)"><img src="media/93f0a4d91d50f67c790d7dc8be39e483.webp" alt="Gothic abbey tower rising from fog, storm embers on the horizon" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture>
+<picture class="hero-slide" style="position: absolute; inset: 0; display: block; animation-delay: 9s"><source srcset="media/73a79e23a3ebc8f8883ddc53537799a0.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/eb314ae175d4f1b9930dffb50e6d9e60.webp" media="(max-width: 700px)"><img src="media/c5a56aaf0e3883952624d1a8d940a541.webp" alt="A ring of fire spreading across the heath below the castle" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture>
+<picture class="hero-slide" style="position: absolute; inset: 0; display: block; animation-delay: 14s"><source srcset="media/b14abf487fcb77311f4c1508ac1259c6.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/71428e4a3cf26ce5eff324c7a92aca70.webp" media="(max-width: 700px)"><img src="media/d2f5b2e234389a12dbef632d681bf018.webp" alt="Waterfall into a turquoise pool, the stream winding away" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture>
+<picture class="hero-slide" style="position: absolute; inset: 0; display: block; animation-delay: 19s"><source srcset="media/8c49ebe3e2504402626e075ed6e7bd06.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/efdb373eff8decad66683db747f65a48.webp" media="(max-width: 700px)"><img src="media/0180b04a4ff242873d093a0e24f16759.webp" alt="River ford at dusk with a wooden bridge and timber gateway" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(14, 15, 17, 0.45)"></div>
+<div style="position: relative; max-width: 1000px; padding: 96px clamp(20px, 5vw, 56px) 112px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6)">
+<div style="max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 18px">
+<h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 72px); font-weight: 500; font-stretch: 125%; line-height: 0.95; letter-spacing: -0.03em">Ben Reyes</h1>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2; box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5)"></span>
+</div>
+<p style="margin: 0; font-size: clamp(19px, 2vw, 24px); font-weight: 500">Game Developer &amp; Interactive Designer</p>
+</div>
+</section>
+
+<main style="max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); box-sizing: border-box">
+
+<!-- Work -->
+<section id="work" style="padding: 72px 0 96px; display: flex; flex-direction: column; gap: 64px">
+
+<div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<div style="max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px">
+<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 40px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.05">Work</h2>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<p style="margin: 6px 0 0; max-width: 52ch; font-size: 17px; font-style: italic; line-height: 1.5; color: #CFCBC2">The three games I'm most proud of.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 28px; width: min(1760px, calc(100vw - 40px)); position: relative; left: 50%; transform: translateX(-50%)">
+
+<button type="button" class="tile" onclick="P.openCoop(event)" aria-haspopup="dialog" aria-label="[Game title], multiplayer co-op adventure" style="position: relative; display: block; width: 100%; padding: 0; border: none; cursor: pointer; font: inherit; color: inherit; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #18191C">
+<span class="tile-img" style="position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; background: #18191C"><img src="media/2e1bd321ac32d48c23e741fe566e9eab.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
+<span class="tile-title" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; font-size: clamp(24px, 2.6vw, 36px); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7)">[Game title]</span>
+</button>
+
+<button type="button" class="tile" onclick="P.openNyu(event)" aria-haspopup="dialog" aria-label="Tetherblade, 2D action platformer" style="position: relative; display: block; width: 100%; padding: 0; border: none; cursor: pointer; font: inherit; color: inherit; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0F2220">
+<span class="tile-img" style="position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; background: #0F2220"><img src="media/d9260e36879e8659395dec477fd8b42f.png" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; image-rendering: pixelated"></span>
+<span class="tile-title" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; font-size: clamp(24px, 2.6vw, 36px); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7)">TETHERBLADE</span>
+</button>
+
+<button type="button" class="tile" onclick="P.openHero(event)" aria-haspopup="dialog" aria-label="Hero's Journey, narrative adventure" style="position: relative; display: block; width: 100%; padding: 0; border: none; cursor: pointer; font: inherit; color: inherit; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #18191C">
+<span class="tile-img" style="position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; background: #18191C"><img src="media/1c4577bc081a82eaf2b09762b7f482d8.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
+<span class="tile-scrim" aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(8, 9, 10, 0.75) 0%, rgba(8, 9, 10, 0.35) 60%, rgba(8, 9, 10, 0) 100%)"></span>
+<span class="tile-title" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; font-size: clamp(24px, 2.6vw, 36px); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7)">Hero's Journey</span>
+</button>
+</div>
+</section>
+
+<!-- About -->
+<section id="about" style="padding: 96px 0 112px; border-top: 1px solid #2F3237; display: flex; flex-direction: column; align-items: center; gap: 48px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<div style="max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px">
+<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 40px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.05">About</h2>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+</div>
+<div style="width: 100%; max-width: 680px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 18px; font-size: 19px; line-height: 1.65; color: #DAD6CE">
+<p style="margin: 0">I'm an Architecture major at Brooklyn Technical High School, and I've been making games in Unity since early 2022.</p>
+<p style="margin: 0">Architecture taught me to think about how people move through a space, and I bring that into how I design levels and systems. What I care about most is how a game feels to play.</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer style="border-top: 1px solid #2F3237; background: #1D1E22">
+<div style="max-width: 1180px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 56px); box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 14px; color: #A3A39E">
+<span>Ben Reyes, 2026</span>
+<a href="#top" onclick="P.goTop(event)" style="color: #A3A39E">Back to top</a>
+</div>
+</footer>
+
+<!-- Game overlays -->
+<div class="ov-wrap" data-game="coop" hidden>
+<div class="modal-backdrop" onclick="P.closeGame(event)" onkeydown="P.modalKey(event)" style="position: fixed; inset: 0; z-index: 50; background: rgba(8, 9, 10, 0.78); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px)">
+<div class="modal-panel" role="dialog" aria-modal="true" aria-label="[Game title], multiplayer co-op adventure" onclick="P.stop(event)" style="position: absolute; inset: clamp(12px, 2.5vw, 32px); overflow: hidden; background: #16171A; border: 1px solid #2F3237; border-radius: 8px">
+<button type="button" class="modal-close" onclick="P.closeGame(event)" aria-label="Close" style="position: absolute; top: 16px; right: 16px; z-index: 3; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid #4A4E55; background: rgba(22, 23, 26, 0.7); color: #ECE9E2; cursor: pointer"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round"><path d="M3 3 L13 13 M13 3 L3 13"></path></svg></button>
+<div class="modal-scroll" style="position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain">
+
+<section class="ov-hero" style="position: relative; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid #2F3237; background: #16171A">
+<picture style="display: contents"><source srcset="media/d449d05505747728482f9a36e2779f6a.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/fb1f501640d5a0ce0cdade29bc073a2e.webp" media="(max-width: 700px)"><img src="media/3d9e328193239753d489f3e631fa2fe0.webp" alt="Aerial orbit of the ruined castle on its crag" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></picture>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(14, 15, 17, 0.45)"></div>
+<div style="position: relative; max-width: 1000px; padding: 96px clamp(20px, 5vw, 56px); box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6)">
+<h2 style="margin: 0; font-size: clamp(38px, 5.5vw, 72px); font-weight: 500; line-height: 0.95; letter-spacing: -0.03em">[Game title]</h2>
+<p style="margin: 0; font-size: clamp(19px, 2vw, 24px); font-weight: 500">Multiplayer co-op adventure</p>
+</div>
+</section>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 56px) 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: clamp(64px, 8vw, 104px)">
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/5e5c2474ce989d659f646c8316ed6c20.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/db5ab411d45ff6d26c55d76a89233413.webp" media="(max-width: 700px)"><img src="media/fd78d2bacf53b426ca263c4af7bb743c.webp" alt="A run: spawn on the sea cliff, the map, a wolf pack, the night boss" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Overview</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">A multiplayer co-op game I'm currently developing in Unity with Photon Fusion.</p>
+<p style="margin: 0; color: #DAD6CE">Players land on an island and gather loot before the storm comes, when they fight a final boss.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/eae2349741b7ef8fb12f6090dfb9f699.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/9662b814285e4fe99a0ee21e4d935a54.webp" media="(max-width: 700px)"><img src="media/870080a43215aa1ead97ef14ec213585.webp" alt="A bear fight with a daze and riposte, three wolves, and Flame Wave" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Combat</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Readable attacks are a core component of making combat fair and rewarding.</p>
+<p style="margin: 0; color: #DAD6CE">Animals are carefully designed to telegraph attacks before they land. A glint star flashes before they strike, which gives the player enough time to dodge. Animals behave intelligently, and each one is unique.</p>
+<p style="margin: 0; color: #DAD6CE">Weapon skills affect the environment itself. Ice will freeze fire that's spreading.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/bde520461d7f6a67c9a38a142cb0534f.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/dd363500a6ab6b696ab2930ded783a69.webp" media="(max-width: 700px)"><img src="media/271658a8c2c871dc9a4eb0aabc3be5d6.webp" alt="Looking down at your own hand on the sword grip, then the teammate view of the same player" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">First Person Body</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">The game is in first person. If you look down, you'll see your shadow alongside your hands and feet. Your teammates will see the same player fighting at full size.</p>
+<p style="margin: 0; color: #A3A39E">[What having a visible body changes about how the game feels.]</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 28px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Playing together</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div class="coop-wide" style="width: 100%; aspect-ratio: 32 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/3e3a34e54bfb93f2387cb1a7b6f208ee.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/46758759df80d0b031404c592c38fbb7.webp" media="(max-width: 700px)"><img src="media/830396051cc815af5d71ed5579f1e9e8.webp" alt="Host and client screens side by side, recorded at the same moment" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="align-self: center; width: 100%; max-width: 760px; display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Up to four players can connect to one world. On the left, the host fights up close with a great sword, while the client on the right covers with a minigun.</p>
+<p style="margin: 0; color: #DAD6CE">One problem I ran into was the held weapon. In first person it's drawn small so it fits your own view, which made it look tiny from a teammate's camera. To check what other players actually see, I test co-op by running two separate builds of the game in one session, about 30 ms apart, and recording both screens at the same moment.</p>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/fe7c82045fee62f6467a9d77331e26be.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/117b3f939703176c51f42e29856994dc.webp" media="(max-width: 700px)"><img src="media/e0443b7b25359bdec0eb1ba325a46440.webp" alt="Trail, bridge and a timber gateway guarded by a moose; a gateway orbit; a bear leaving its den" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Level design and architecture</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Each of the game's zones is carefully planned out. Slope and relief maps help dictate where players can walk and climb. Danger rises as the player goes further from spawn, and animals gate further zones with better loot.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="ov-wrap" data-game="nyu" hidden>
+<div class="modal-backdrop" onclick="P.closeGame(event)" onkeydown="P.modalKey(event)" style="position: fixed; inset: 0; z-index: 50; background: rgba(8, 9, 10, 0.78); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px)">
+<div class="modal-panel" role="dialog" aria-modal="true" aria-label="Tetherblade, 2D action platformer" onclick="P.stop(event)" style="position: absolute; inset: clamp(12px, 2.5vw, 32px); overflow: hidden; background: #16171A; border: 1px solid #2F3237; border-radius: 8px">
+<button type="button" class="modal-close" onclick="P.closeGame(event)" aria-label="Close" style="position: absolute; top: 16px; right: 16px; z-index: 3; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid #4A4E55; background: rgba(22, 23, 26, 0.7); color: #ECE9E2; cursor: pointer"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round"><path d="M3 3 L13 13 M13 3 L3 13"></path></svg></button>
+<div class="modal-scroll" style="position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain">
+
+<section class="ov-hero" style="position: relative; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid #2F3237; background: #16171A">
+<img src="media/becf57016cd7575909bf96e8b70836af.jpg" alt="The summit torii gate against the sun in Tetherblade" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; image-rendering: pixelated">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(10, 11, 13, 0.75) 0%, rgba(10, 11, 13, 0.45) 60%, rgba(10, 11, 13, 0.3) 100%)"></div>
+<div style="position: relative; max-width: 1000px; padding: 96px clamp(20px, 5vw, 56px); box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6)">
+<h2 style="margin: 0; font-size: clamp(38px, 5.5vw, 72px); font-weight: 500; line-height: 0.95; letter-spacing: 0.02em; text-transform: uppercase">Tetherblade</h2>
+<p style="margin: 0; font-size: clamp(19px, 2vw, 24px); font-weight: 500">A 2D action platformer made in GameMaker at NYU Tisch's Future Game Designers program</p>
+</div>
+</section>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 56px) 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: clamp(64px, 8vw, 104px)">
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/042d56a8724504af3ab3d91e1d2f0ce9.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/fb1b6a578ad977e61a41766fdb95b5f3.webp" media="(max-width: 700px)"><img src="media/9aa452caa1ed14f828b7850888ed10de.webp" alt="Tetherblade gameplay overview" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Overview</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">TETHERBLADE is a 2D platformer I made with a partner in GameMaker for NYU's Future Game Designers program.</p>
+<p style="margin: 0; color: #DAD6CE">We were given the verb "extend" to work with, so the player has a grappling hook that allows them to traverse up to the final boss, the Wyrmreaper.</p>
+<p style="margin: 0; color: #DAD6CE">As an architecture student, I designed the level as a piece of architecture: a shrine approach that changes as you climb, using space, light and materials to guide the player instead of relying on signs.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/ad6a3cf0ba288e99d63f68a6c9aa906b.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/fa7d93588d67f1820eb94d9c2216cfc6.webp" media="(max-width: 700px)"><img src="media/49a261718d0b052692f4e1b9935c86d6.webp" alt="Grappling up a dark shaft and swinging across a gap" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Grapple traversal</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Zip from perch to perch up a dark shaft, climb out into the open, then swing under a gallery and let go to fly across a gap.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/01bad742c721aa32b957958b410d42b7.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/52720615d0c68a3f6a5ef339d02eab71.webp" media="(max-width: 700px)"><img src="media/2959bbefef456d5b4c46acd4cc8fbe2b.webp" alt="Chaining grapples from moth to moth" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Moth chain</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Grappling a moth flies you straight through it with a slash and bounces you off, so you can chain moth to moth across a gap.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/060e44a8e7932c666d5d25e20148be95.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/9441d9216722b4387048dde15889a67e.webp" media="(max-width: 700px)"><img src="media/1c11f2032bd5072ae7d33a42ba03bf84.webp" alt="Flipping a beetle and cutting embers out of the air" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Enemies that teach moves</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">A beetle whose roof-tile shell turns the sword aside, so you flip it with the grapple. A stone guardian whose lobbed embers you cut out of the air with an up-slash.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/cee295bab1962a77b2522f179f9c3076.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/db247c8b02c46e0779a0d0b4a4057c22.webp" media="(max-width: 700px)"><img src="media/ffffe2b7dc22f777bd2de9c54082d2fc.webp" alt="The Wyrmreaper boss fight" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">The Wyrmreaper</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">The full boss fight: its entrance, readable attack tells, a knockdown, a second phase under a red sky, and its defeat at sunrise.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/ad1afed203d5d4060d7f3fc948c062ae.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/1193ad7ef31989495bdf19d667e789be.webp" media="(max-width: 700px)"><img src="media/b30495b7e128c8f66fd985365c6a9d72.webp" alt="A walk up the level from the portico to the Sanctum" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">The climb as architecture</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">A walk up the level, from a low portico (compression) through a dark shaft lit only by moonlight from above, out to the summit gate against the sun (release). Then a tunnel of torii gates, a quiet plaster hall, and the light well up into the Sanctum.</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="ov-wrap" data-game="hero" hidden>
+<div class="modal-backdrop" onclick="P.closeGame(event)" onkeydown="P.modalKey(event)" style="position: fixed; inset: 0; z-index: 50; background: rgba(8, 9, 10, 0.78); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px)">
+<div class="modal-panel" role="dialog" aria-modal="true" aria-label="Hero's Journey, narrative adventure" onclick="P.stop(event)" style="position: absolute; inset: clamp(12px, 2.5vw, 32px); overflow: hidden; background: #16171A; border: 1px solid #2F3237; border-radius: 8px">
+<button type="button" class="modal-close" onclick="P.closeGame(event)" aria-label="Close" style="position: absolute; top: 16px; right: 16px; z-index: 3; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid #4A4E55; background: rgba(22, 23, 26, 0.7); color: #ECE9E2; cursor: pointer"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round"><path d="M3 3 L13 13 M13 3 L3 13"></path></svg></button>
+<div class="modal-scroll" style="position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain">
+
+<section class="ov-hero" style="position: relative; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid #2F3237; background: #16171A">
+<img src="media/798ad9d700db6be94b2593dd8149d7b8.jpg" alt="The Dungeon's great hall in Hero's Journey" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(10, 11, 13, 0.78) 0%, rgba(10, 11, 13, 0.5) 55%, rgba(10, 11, 13, 0.35) 100%)"></div>
+<div style="position: relative; max-width: 1000px; padding: 96px clamp(20px, 5vw, 56px); box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6)">
+<h2 style="margin: 0; font-size: clamp(38px, 5.5vw, 72px); font-weight: 500; line-height: 0.95; letter-spacing: -0.03em">Hero's Journey</h2>
+<p style="margin: 0; font-size: clamp(19px, 2vw, 24px); font-weight: 500">A narrative adventure for English class, made in Unity and C#</p>
+</div>
+</section>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 56px) 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: clamp(64px, 8vw, 104px)">
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<figure style="flex: 1 1 460px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/4c746f177eeee81552a5737b6a683519.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/362f238cc3e93a77481ef3a0415844d4.webp" media="(max-width: 700px)"><img src="media/69e77bddf9abcc02564ea325fb0cdbb0.webp" alt="Gameplay montage from every world in Hero's Journey" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+</figure>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Overview</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">I made this game as a project for an assignment on the Hero's Journey in my English class. I used game design as a medium for storytelling.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<figure style="flex: 1 1 460px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/dd1481ea705317d542d82aa0e1352f5f.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/ab5159d077aeb884bd72c94a72ba21c1.webp" media="(max-width: 700px)"><img src="media/369727cea162ef8678d30621cf08f252.webp" alt="A conversation with numbered dialogue choices" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+</figure>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Branching dialogue</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Whenever dialogue happens, the player is presented with multiple options. These options affect how the story plays out.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<figure style="flex: 1 1 460px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/265021a5fcb3c3dfa296fad3155e5843.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/7ac58b98cd6797d6101c1d332b9ed61d.webp" media="(max-width: 700px)"><img src="media/1f28ca02c99932aea3adfa4d5925308d.webp" alt="The Judge giving a verdict, then the three ending worlds" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+</figure>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Differing Endings</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Unlike a traditional novel, a game lets you depict multiple possible endings. The ending you receive depends on the choices you made throughout the game.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<figure style="flex: 1 1 460px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/9c012a34aded284efec4a6f170063f8b.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/4002f239399e133f7fafcfd4d379f0ff.webp" media="(max-width: 700px)"><img src="media/daeecf2180f68a67cd9c62adfb463495.webp" alt="Walking up to a character, the talk prompt, then a cutscene" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+</figure>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Characters and cutscenes</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">When the player walks up to an NPC, a prompt appears to talk to them. Some conversations start a cutscene made with Unity's Timeline, so important story moments play out on screen instead of only in text.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<figure style="flex: 1 1 460px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/1ff07f574bacf6c33ac0b1987b7a6ee5.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/24e43a37d3ae64caf6ca48c7a88ee843.webp" media="(max-width: 700px)"><img src="media/d1ee645087780eacdc252eb753a82d9e.webp" alt="A tutorial hint, a gate that lifts when the player reaches it, and a waypoint marker counting down to the village" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+</figure>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Player guidance</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Players are guided by an objective marker and a minimap. Tutorial hints also pop up in certain spots to help the player.</p>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-items: center; gap: 32px clamp(32px, 4vw, 64px)">
+<figure style="flex: 1 1 460px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="aspect-ratio: 16 / 9; max-width: 100%; border-radius: 6px; overflow: hidden; background: #0E0F11"><picture style="display: contents"><source srcset="media/41ea26daad4f9b87588a70f11678604a.jpg" media="(prefers-reduced-motion: reduce)"><source srcset="media/98992800c961daee86584ae1993b2f77.webp" media="(max-width: 700px)"><img src="media/bb241268fbc524b708ab901445feb5da.webp" alt="Intro cutscenes for three of the worlds" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block"></picture></div>
+</figure>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="align-self: center; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center">
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1">Cinematic intros</h3>
+<span aria-hidden="true" style="height: 2px; margin: 0 -16px; background: #ECE9E2"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px; line-height: 1.65">
+<p style="margin: 0; color: #DAD6CE">Each world in the game stands for a different stage of the Hero's Journey. When the player enters a new world, a short cutscene introduces the place and what the hero is facing, so the player knows where they are in the story before they start playing.</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+(function(){
+var reduce=false;try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+var cur=null,closing=false,lastTile=null,locked=false,raf;
+function block(e){var sc=e.target&&e.target.closest?e.target.closest('.modal-scroll'):null;if(!sc)e.preventDefault()}
+function lock(on){if(on===locked)return;locked=on;document.documentElement.style.overflow=on?'hidden':'';document.body.style.overflow=on?'hidden':'';
+ if(on){document.addEventListener('wheel',block,{passive:false,capture:true});document.addEventListener('touchmove',block,{passive:false,capture:true})}
+ else{document.removeEventListener('wheel',block,{capture:true});document.removeEventListener('touchmove',block,{capture:true})}}
+function open(id,e){if(e&&e.preventDefault)e.preventDefault();lastTile=e&&e.currentTarget||null;var w=document.querySelector('.ov-wrap[data-game="'+id+'"]');if(!w)return;
+ cur=w;w.hidden=false;var sc=w.querySelector('.modal-scroll');if(sc)sc.scrollTop=0;lock(true);var b=w.querySelector('.modal-close');if(b)b.focus()}
+function close(){if(!cur||closing)return;var w=cur;var bd=w.querySelector('.modal-backdrop');
+ function done(){if(bd)bd.classList.remove('is-closing');w.hidden=true;cur=null;closing=false;lock(false);if(lastTile&&lastTile.focus)lastTile.focus()}
+ if(reduce||!bd){done();return}closing=true;bd.classList.add('is-closing');setTimeout(done,340)}
+function smooth(id,e){var el=document.getElementById(id);if(!el)return;if(e&&e.preventDefault)e.preventDefault();
+ var off=id==='top'?0:72,target=Math.max(0,el.getBoundingClientRect().top+scrollY-off),start=scrollY,dist=target-start;
+ if(raf)cancelAnimationFrame(raf);if(reduce||Math.abs(dist)<2){scrollTo(0,target);return}
+ var dur=Math.min(1500,900+Math.abs(dist)*0.2),t0=performance.now(),ease=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+ (function step(now){var t=Math.min(1,(now-t0)/dur);scrollTo(0,start+dist*ease(t));if(t<1)raf=requestAnimationFrame(step)})(t0)}
+window.P={openCoop:function(e){open('coop',e)},openNyu:function(e){open('nyu',e)},openHero:function(e){open('hero',e)},
+ closeGame:function(){close()},goWork:function(e){smooth('work',e)},goAbout:function(e){smooth('about',e)},goTop:function(e){smooth('top',e)},
+ stop:function(e){e.stopPropagation()},modalKey:function(e){if(e.key==='Escape')close()}};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+var hdr=document.querySelector('.site-header'),sc=null;
+function onScroll(){var s=scrollY>40;if(s===sc)return;sc=s;hdr.style.background=s?'rgba(22, 23, 26, 0.92)':'rgba(22, 23, 26, 0)';
+ hdr.style.backdropFilter=hdr.style.webkitBackdropFilter=s?'blur(8px)':'none';hdr.style.borderBottomColor=s?'#2F3237':'rgba(47, 50, 55, 0)'}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+</body>
+</html>
