@@ -55,6 +55,7 @@ p{text-wrap:pretty}
 @media (max-width: 700px){.hero-intro{min-height:560px!important}.ov-hero{min-height:400px!important}.coop-wide{aspect-ratio:16 / 18!important}}
 </style>
 
+<style>video{pointer-events:none}video::-webkit-media-controls,video::-webkit-media-controls-enclosure,video::-webkit-media-controls-panel{display:none!important;-webkit-appearance:none}video::-webkit-media-controls-start-playback-button{display:none!important}</style>
 </head>
 <body>
 
@@ -460,7 +461,7 @@ function lock(on){if(on===locked)return;locked=on;document.documentElement.style
  if(on){document.addEventListener('wheel',block,{passive:false,capture:true});document.addEventListener('touchmove',block,{passive:false,capture:true})}
  else{document.removeEventListener('wheel',block,{capture:true});document.removeEventListener('touchmove',block,{capture:true})}}
 function open(id,e){if(e&&e.preventDefault)e.preventDefault();lastTile=e&&e.currentTarget||null;var w=document.querySelector('.ov-wrap[data-game="'+id+'"]');if(!w)return;
- cur=w;w.hidden=false;w.querySelectorAll('video').forEach(function(v){if(v.dataset.poster&&!v.poster)v.poster=v.dataset.poster;if(reduce){v.controls=true;return}v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){v.controls=true})});var sc=w.querySelector('.modal-scroll');if(sc)sc.scrollTop=0;lock(true);var b=w.querySelector('.modal-close');if(b)b.focus()}
+ cur=w;w.hidden=false;w.querySelectorAll('video').forEach(function(v){if(v.dataset.poster&&!v.poster)v.poster=v.dataset.poster;if(reduce)return;v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){})});var sc=w.querySelector('.modal-scroll');if(sc)sc.scrollTop=0;lock(true);var b=w.querySelector('.modal-close');if(b)b.focus()}
 function close(){if(!cur||closing)return;var w=cur;var bd=w.querySelector('.modal-backdrop');
  function done(){w.querySelectorAll('video').forEach(function(v){v.pause()});if(bd)bd.classList.remove('is-closing');w.hidden=true;cur=null;closing=false;lock(false);if(lastTile&&lastTile.focus)lastTile.focus()}
  if(reduce||!bd){done();return}closing=true;bd.classList.add('is-closing');setTimeout(done,340)}
